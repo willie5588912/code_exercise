@@ -103,6 +103,50 @@ void checklength(int &a_size, int &b_size, int stage, int idx, int n)
 void compare(int *p_a, int *p_b, int a_size, int b_size, int *p_new_arr, int new_idx)
 {
 	int i = 0, j = 0;
+	if (b_size != 0)
+	{
+		while (new_idx < a_size + b_size)
+		{
+			if (i < a_size && j < b_size)
+			{
+				if (p_a[i] <= p_b[j]])
+				{
+					i++;
+					new_idx++;
+					p_new_arr[new_idx] = p_a[i];
+				}
+				else if (p_a[i]>p_b[j])
+				{
+					j++;
+					new_idx++;
+					p_new_arr[new_idx] = p_b[j];
+				}
+			}
+			else if (i != a_size || j != b_size)
+			{
+				if (i == a_size)
+				{
+					j++;
+					new_idx++;
+					p_new_arr[new_idx] = p_b[j];
+				}
+				else if (j == b_size)
+				{
+					i++;
+					new_idx++;
+					p_new_arr[new_idx] = p_b[i];
+				}
+			}
+		}
+	}
+	else if (b_size == 0)
+	{
+		for (int ii = 0; ii < a_size; ii++)
+		{
+			new_idx++;
+			p_new_arr[new_idx] = p_a[ii];
+		}
+	}
 }
 
 
